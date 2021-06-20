@@ -3,6 +3,7 @@ package moe.quill;
 import moe.quill.StratumCommonApi.Commands.StratumCommand;
 import moe.quill.StratumCommonApi.Database.IDatabaseService;
 import moe.quill.StratumCommonApi.KeyManager.IKeyManager;
+import moe.quill.StratumCommonApi.Plugin.StratumConfig;
 import moe.quill.StratumCommonApi.Serialization.ISerializer;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
