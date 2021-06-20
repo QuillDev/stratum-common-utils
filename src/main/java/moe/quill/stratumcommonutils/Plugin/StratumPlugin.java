@@ -1,10 +1,10 @@
-package moe.quill;
+package moe.quill.stratumcommonutils.Plugin;
 
-import moe.quill.StratumCommonApi.Commands.StratumCommand;
 import moe.quill.StratumCommonApi.Database.IDatabaseService;
 import moe.quill.StratumCommonApi.KeyManager.IKeyManager;
-import moe.quill.StratumCommonApi.Plugin.StratumConfig;
 import moe.quill.StratumCommonApi.Serialization.ISerializer;
+import moe.quill.stratumcommonutils.Commands.StratumCommand;
+import moe.quill.stratumcommonutils.Plugin.Configuration.StratumConfig;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,7 +39,7 @@ public class StratumPlugin extends JavaPlugin {
             final var dbRegistration = servicesManager.getRegistration(IDatabaseService.class);
             if (dbRegistration == null) {
                 logger.error(String.format("Unable to find the database manager! [%s]", IDatabaseService.class.hashCode()));
-                pluginManager.disablePlugin(this, true);
+                pluginManager.disablePlugin(this);
                 return;
             }
             databaseService = dbRegistration.getProvider();
@@ -50,7 +50,7 @@ public class StratumPlugin extends JavaPlugin {
             final var keyRegistration = servicesManager.getRegistration(IKeyManager.class);
             if (keyRegistration == null) {
                 logger.error(String.format("Unable to find the key manager! [%s]", IKeyManager.class.hashCode()));
-                pluginManager.disablePlugin(this, true);
+                pluginManager.disablePlugin(this);
                 return;
             }
             keyManager = keyRegistration.getProvider();
@@ -61,7 +61,7 @@ public class StratumPlugin extends JavaPlugin {
             final var serializerRegistration = servicesManager.getRegistration(ISerializer.class);
             if (serializerRegistration == null) {
                 logger.error(String.format("Unable to find the key serializer! [%s]", ISerializer.class.hashCode()));
-                pluginManager.disablePlugin(this, true);
+                pluginManager.disablePlugin(this);
                 return;
             }
             serializer = serializerRegistration.getProvider();
